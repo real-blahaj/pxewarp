@@ -1,13 +1,13 @@
-package moe.pxe.warpCommand.command;
+package moe.pxe.pxewarp.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
-import moe.pxe.warpCommand.Main;
-import moe.pxe.warpCommand.Warp;
-import moe.pxe.warpCommand.Warps;
+import moe.pxe.pxewarp.Main;
+import moe.pxe.pxewarp.Warp;
+import moe.pxe.pxewarp.Warps;
 import net.kyori.adventure.inventory.Book;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;

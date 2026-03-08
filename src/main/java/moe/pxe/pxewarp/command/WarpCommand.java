@@ -1,4 +1,4 @@
-package moe.pxe.warpCommand.command;
+package moe.pxe.pxewarp.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -6,8 +6,8 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import moe.pxe.warpCommand.Warp;
-import moe.pxe.warpCommand.command.argument.WarpArgument;
+import moe.pxe.pxewarp.Warp;
+import moe.pxe.pxewarp.command.argument.WarpArgument;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Player;

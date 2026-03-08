@@ -1,4 +1,4 @@
-package moe.pxe.warpCommand;
+package moe.pxe.pxewarp;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;

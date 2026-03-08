@@ -1,4 +1,4 @@
-package moe.pxe.warpCommand.command.argument;
+package moe.pxe.pxewarp.command.argument;
 
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -11,8 +11,8 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.MessageComponentSerializer;
 import io.papermc.paper.command.brigadier.argument.CustomArgumentType;
-import moe.pxe.warpCommand.Warp;
-import moe.pxe.warpCommand.Warps;
+import moe.pxe.pxewarp.Warp;
+import moe.pxe.pxewarp.Warps;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.jspecify.annotations.NonNull;

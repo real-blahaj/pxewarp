@@ -1,4 +1,4 @@
-package moe.pxe.warpCommand.command;
+package moe.pxe.pxewarp.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -8,10 +8,10 @@ import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.command.brigadier.argument.resolvers.FinePositionResolver;
 import io.papermc.paper.math.FinePosition;
-import moe.pxe.warpCommand.Main;
-import moe.pxe.warpCommand.Warp;
-import moe.pxe.warpCommand.Warps;
-import moe.pxe.warpCommand.command.argument.WarpArgument;
+import moe.pxe.pxewarp.Main;
+import moe.pxe.pxewarp.Warp;
+import moe.pxe.pxewarp.Warps;
+import moe.pxe.pxewarp.command.argument.WarpArgument;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -25,7 +25,12 @@ public class SetWarpCommand {
     public static LiteralCommandNode<CommandSourceStack> getCommand() {
         Runnable saveConfig = Main.getInstance()::saveWarpConfig;
         return Commands.literal("setwarp")
-                .requires(ctx -> ctx.getSender().hasPermission("warps.set") || ctx.getSender().isOp())
+                .requires(ctx -> ctx.getSender().hasPermission("warps.create")
+                        || ctx.getSender().hasPermission("warps.set.location")
+                        || ctx.getSender().hasPermission("warps.set.displayname")
+                        || ctx.getSender().hasPermission("warps.set.description")
+                        || ctx.getSender().hasPermission("warps.set.permission")
+                        || ctx.getSender().isOp())
                 .then(Commands.argument("warp", new WarpArgument())
                         .then(Commands.literal("displayname")
                                 .requires(ctx -> ctx.getSender().hasPermission("warps.set.displayname") || ctx.getSender().isOp())
@@ -110,6 +115,7 @@ public class SetWarpCommand {
                                     return Command.SINGLE_SUCCESS;
                                 }))
                         .then(Commands.literal("location")
+                                .requires(ctx -> ctx.getSender().hasPermission("warps.set.location") || ctx.getSender().isOp())
                                 .then(Commands.argument("location", ArgumentTypes.finePosition(true))
                                         .executes(ctx -> {
                                             Warp warp = ctx.getArgument("warp", Warp.class);
@@ -136,6 +142,9 @@ public class SetWarpCommand {
                                     return Command.SINGLE_SUCCESS;
                                 }))
                         .executes(ctx -> {
+                            if (!(ctx.getSource().getSender().hasPermission("warps.set.location") || ctx.getSource().getSender().isOp()))
+                                ctx.getSource().getSender().sendRichMessage("<red>You do not have permission to set the location of warps");
+
                             Warp warp = ctx.getArgument("warp", Warp.class);
 
                             warp.setLocation(ctx.getSource().getLocation());
@@ -145,7 +154,7 @@ public class SetWarpCommand {
                             return Command.SINGLE_SUCCESS;
                         }))
                 .then(Commands.argument("name", StringArgumentType.word())
-                        .requires(ctx -> ctx.getSender().hasPermission("warp.create") || ctx.getSender().isOp())
+                        .requires(ctx -> ctx.getSender().hasPermission("warps.create") || ctx.getSender().isOp())
                         .executes(ctx -> {
                             String name = ctx.getArgument("name", String.class);
                             if (Warps.getWarp(name) != null) {

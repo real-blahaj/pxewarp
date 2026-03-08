@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'moe.pxe'
-version = '0.1.0'
+version = property("version")
 
 repositories {
     mavenCentral()

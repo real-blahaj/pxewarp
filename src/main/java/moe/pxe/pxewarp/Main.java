@@ -1,10 +1,10 @@
-package moe.pxe.warpCommand;
+package moe.pxe.pxewarp;
 
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
-import moe.pxe.warpCommand.command.DeleteWarpCommand;
-import moe.pxe.warpCommand.command.ListWarpsCommand;
-import moe.pxe.warpCommand.command.SetWarpCommand;
-import moe.pxe.warpCommand.command.WarpCommand;
+import moe.pxe.pxewarp.command.DeleteWarpCommand;
+import moe.pxe.pxewarp.command.ListWarpsCommand;
+import moe.pxe.pxewarp.command.SetWarpCommand;
+import moe.pxe.pxewarp.command.WarpCommand;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
